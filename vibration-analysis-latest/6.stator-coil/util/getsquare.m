@@ -4,11 +4,11 @@ function square = getsquare(data)
     for i = 1:length(data)-1
         if data(i)*data(i+1)<0
             sum = sum + data(i);
-            square(end + 1) = sum;
+            square(end+1) = sum;
             sum = 0;
         else
             sum = sum + data(i);
         end
     end
-    square = square(2:end)';
+    square = square';
 end

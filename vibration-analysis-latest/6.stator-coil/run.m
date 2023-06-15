@@ -1,32 +1,19 @@
 clear all; close all
 addpath(fullfile(pwd, '\util'));
-data = readmatrix(fullfile('100%n_coil_ΒΑ_νθη.csv'));
 poles = 16;
-data = reducebyrotate(data,poles,6);
-time = data(:,1); fs = 1/mean(diff(time));
-counter = bymax(data(:,2));
-raw = data(:,3);
-sgn = raw - mean(raw);
-sgn = bymax(bpfilter(sgn, 8, 20, 100, fs));
-mm = maxinpole(sgn);
+[time, counter, base, signal, fs] = ...
+    importdata('data\100%U_coil_ΒΑ_νθη.csv', poles);
 
+flow = getflow(signal, 1/fs, 5);
+figure('Name', 'Raw signal')
+plot(time,counter*max(signal), time,abs(signal),'LineWidth', 1);
 
-flow = bymax(getflow(sgn));
-mmflow = maxinpole(flow);
-square = bymax(abs(getsquare(flow)));
-%plot(time,counter,time,abs(sgn),time,abs(flow),'LineWidth', 1);
-plot(time,counter,time,abs(sgn),time,abs(flow),'LineWidth', 1);
-ylim([0.86 1]);
+fcnt = getcountertime(counter, time, poles);
+mm = maxinpole(signal);
+barwithmark(rescale(mm), fcnt, 'Max values by pole', [0.95 1]);
 
-legend('counter', 'ABS(signal)', 'ABS(flow)');
+square = (abs(getsquare(signal)));
+barwithmark(square, fcnt, 'Sum of signal by pole', [0 0]);
 
-fcnt = getcountertime(counter,time,.5,poles);
-
-
-barwithmark(square,fcnt);
-ylim([0.7 1]);
-grid on
-
-barwithmark(rescale(mm),fcnt);
-ylim([0.93 1]);
-grid on
+square = (abs(getsquare(base)));
+barwithmark(square, fcnt, 'Sum of base by pole', [0 0]);
