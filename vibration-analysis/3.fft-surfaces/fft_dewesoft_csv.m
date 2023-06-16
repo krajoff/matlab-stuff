@@ -6,10 +6,10 @@ exfile = {'80%n'; '90%n'; '100%n'; '110%n'; ...
           '0MW'; '12MW'; '20MW'; '30MW'; '40MW'; '50MW'; '60MW'};
 
 
-%folder = 'TB-HR\';
+%folder = 'TB-RB\';
 %folder = 'GB-RB\';
-%folder = 'Bearing support\'; colorlim = 20;
-folder = 'Turbine cover\'; colorlim = 15;
+folder = 'Bearing support\';
+%folder = 'Turbine cover\';
 %folder = 'Stator Core HR\';
 
 rangeTime = 32; % time for analisys, s
@@ -42,8 +42,8 @@ end
 % Limits of graphics
 ribboncoloredZ(Fv,A,.5)
 xlim([.5 n+.5])
-ylim([0 10])
-zlim([0 colorlim])
+ylim([0 20])
+colorlim = 20; zlim([0 colorlim])
 
 
 c = colorbar;

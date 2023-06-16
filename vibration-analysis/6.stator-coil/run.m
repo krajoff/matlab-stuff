@@ -2,11 +2,11 @@ clear all; close all
 addpath(fullfile(pwd, '\util'));
 poles = 16;
 [time, counter, base, signal, fs] = ...
-    importdata('data\100%U_coil_ΒΑ_νθη.csv', poles);
+    importdata('data\100%U_coil_ΟΑ_βεπυ.csv', poles);
 
 flow = getflow(signal, 1/fs, 5);
 figure('Name', 'Raw signal')
-plot(time,counter*max(signal), time,abs(signal),'LineWidth', 1);
+plot(time,counter*max(signal), time,abs(base),'LineWidth', 1);
 
 fcnt = getcountertime(counter, time, poles);
 mm = maxinpole(signal);
