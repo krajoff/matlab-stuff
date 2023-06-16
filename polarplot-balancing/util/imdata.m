@@ -22,7 +22,7 @@ function data = imdata(csvfile)
     % Import the data
     data = readtable(csvfile, opts); 
     
-    %data = addvars(data(:,1:3), table(, 'VariableNames', {'VDate'}) ];
+    % data = addvars(data(:,1:3), table(, 'VariableNames', {'VDate'}) ];
     
     %["ComplexVibration", "CorrectMass", "CorrectPhase"];
     % Specify file level properties
