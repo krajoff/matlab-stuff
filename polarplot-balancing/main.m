@@ -1,8 +1,8 @@
 close all; clear; clc; setpath;
 T = imdata('TupolangLower2_after.csv');
+polarvibration(T)
+thetalim([0.95*min(T.PhaseAmplitude) 1.05*max(T.PhaseAmplitude)])
+%rlim([0.95*min(T.DoubleAmplitude) 1.05*max(T.DoubleAmplitude)])
 
-
-polarpull(T)
-ax = gca;
-%rlim([0.95*min(T.DoubleAmp) 1.05*max(T.DoubleAmp)])
-%thetalim([120 210])
+polarweight(T)
+speclimit(T.PhaseWeight)
