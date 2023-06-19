@@ -8,9 +8,11 @@ function data = imdata(csvfile)
 
     % Specify column names and types
     opts.VariableNames = ["Mode", "DoubleAmplitude", "PhaseAmplitude", ...
-        "Weight", "PhaseWeight"];
-    opts.VariableTypes = ["categorical", "double", "double", ...
-        "double", "double"];
+        "Weight", "PhaseWeight", ...
+        "ComplexVibration", "ComplexWeight", ...
+        "CorrectMass", "CorrectPhase", "ComplexCorrectWeight"];
+    opts.VariableTypes = ["categorical", repelem("double", ...
+        length(opts.VariableNames)-1)];
     opts.ExtraColumnsRule = "ignore";
     opts.EmptyLineRule = "read";
     
@@ -21,16 +23,6 @@ function data = imdata(csvfile)
     
     % Import the data
     data = readtable(csvfile, opts); 
-    
-    % data = addvars(data(:,1:3), table(, 'VariableNames', {'VDate'}) ];
-    
-    %["ComplexVibration", "CorrectMass", "CorrectPhase"];
-    % Specify file level properties
-    
-    
-
-
-
-
-    
+    data = movevars(data, 'ComplexVibration', 'After', 'PhaseAmplitude');
+    data = movevars(data, 'ComplexWeight', 'After', 'PhaseWeight');
 end
