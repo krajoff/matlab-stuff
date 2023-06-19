@@ -10,14 +10,14 @@ function speclimit(T)
         min = NaN;
         for angle = 0:10:350
             if sum(T<angle)>0 
-                min = angle - 10;             
+                min = angle - 15;             
                 break
             end
         end
         max = NaN;
         for angle = 350:-10:0
             if sum(T>angle)>0
-                max = angle + 10;
+                max = angle + 15;
                 break
             end
         end  
