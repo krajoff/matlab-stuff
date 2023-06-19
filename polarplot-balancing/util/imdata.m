@@ -10,7 +10,7 @@ function data = imdata(csvfile)
     opts.VariableNames = ["Mode", "DoubleAmplitude", "PhaseAmplitude", ...
         "Weight", "PhaseWeight", ...
         "ComplexVibration", "ComplexWeight", ...
-        "CorrectMass", "CorrectPhase", "ComplexCorrectWeight"];
+        "CorrectWeight", "CorrectPhase", "ComplexCorrectWeight"];
     opts.VariableTypes = ["categorical", repelem("double", ...
         length(opts.VariableNames)-1)];
     opts.ExtraColumnsRule = "ignore";
@@ -25,4 +25,9 @@ function data = imdata(csvfile)
     data = readtable(csvfile, opts); 
     data = movevars(data, 'ComplexVibration', 'After', 'PhaseAmplitude');
     data = movevars(data, 'ComplexWeight', 'After', 'PhaseWeight');
+    
+    % Add complex values of vibration and weight
+    data.ComplexVibration = getcomplex(data.DoubleAmplitude, ...
+        data.PhaseAmplitude);
+    data.ComplexWeight = getcomplex(data.Weight, data.PhaseWeight);
 end

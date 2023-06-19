@@ -1,3 +1,4 @@
-function result = getcomplex(amp,phase)
-    result = amp*exp(1j*deg2rad(phase));
+function complex = getcomplex(amplitude, phase)
+    %% Complex double from amplitude and phase
+    complex = amplitude.*exp(1j*deg2rad(phase));
 end
