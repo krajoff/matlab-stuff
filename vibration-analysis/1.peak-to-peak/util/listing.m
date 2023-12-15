@@ -1,4 +1,4 @@
-function list=listing(path)
+function list = listing(path)
 
 % return list of folders
     if exist(path) == 7

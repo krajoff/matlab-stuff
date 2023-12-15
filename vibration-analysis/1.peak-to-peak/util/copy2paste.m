@@ -1,5 +1,5 @@
-copyFolder = fullfile('D:\Dewesoft\Exports\USHPP_CSV_4\');
-pasteFolder = fullfile('D:\Station_Test\DEWESoft\Matlab.USHPP.No4\2.data\');
+copyFolder = fullfile('D:\Station_Test\DEWESoft\Zagorskaya\Data_copypaste\');
+pasteFolder = fullfile('D:\Station_Test\DEWESoft\Zagorskaya\Data_copypaste\new\');
 % File DEWESoft name
 nameDewe = {'Бой вала ГП ВБ'; 'Бой вала ГП ПБ'; ...
            'Бой вала ТП ВБ'; 'Бой вала ТП ПБ'; ...
