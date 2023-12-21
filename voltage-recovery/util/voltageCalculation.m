@@ -40,6 +40,7 @@ function voltageCalculation(data, VoltageAnalysis, opt, title)
     semilogy(time, yU, time, yUfun(time), 'Linewidth', 2);
     xticks(0:1:time(end));
     
+    xlim([0, fix(time(end))]);
     ylim([yUfun(time(end))-500, yU(1)+500])
     grid on; hold on;
     semilogy(time, dUsub, 'Linewidth', 2);
