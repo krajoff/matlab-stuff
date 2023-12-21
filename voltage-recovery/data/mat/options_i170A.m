@@ -1,0 +1,39 @@
+function options = options_i170A()
+    % Frequency [Hz]
+    f = 50;
+    % Amplitude of the established line voltage [V]
+    uSteady = 7410;
+    % Temporal discretization [s]
+    disTime = 10e-4;
+    % RMS value of the stator winding phase current {A}
+    ik = 2159*2^-0.5;
+    % Basic resistance [Ohm]
+    zn = 10500/(3^0.5*5077);
+    % Start time [s]
+    startTime = 11.671; 
+    startNumber = int32(startTime/disTime);
+    % Duration time [s]
+    durationTime = 10;
+    % End time [s]
+    endTime = startTime + durationTime; 
+    endNumber = int32(endTime/disTime);
+    % Point interval 
+    pointInt = (disTime*f)^-1;
+    % Cutting first sub-transient process
+    cutPoints = 25;
+    % nth-order one-dimensional median filter
+    nFilter = 1000;
+    options = struct('f', f, ...
+        'uSteady', uSteady, ...
+        'ik', ik, ...
+        'zn', zn, ...
+        'startTime', startTime, ...
+        'startNumber', startNumber, ...
+        'durationTime', durationTime, ...
+        'disTime', disTime, ...
+        'endTime', endTime, ...
+        'endNumber', endNumber, ...
+        'pointInt', pointInt, ...
+        'nFilter', nFilter, ...
+        'cutPoints', cutPoints);
+end
