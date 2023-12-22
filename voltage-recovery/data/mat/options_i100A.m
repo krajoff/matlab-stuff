@@ -4,7 +4,7 @@ function options = options_i100A()
     % Amplitude of the established line voltage [V]
     uSteady = 4236;
     % Temporal discretization [s]
-    disTime = 10e-4;
+    disTime = 1e-4;
     % RMS value of the stator winding phase current {A}
     ik = 1290*2^-0.5;
     % Basic resistance [Ohm]
