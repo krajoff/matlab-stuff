@@ -1,4 +1,6 @@
 function options = options_i100A()
+    % Data-file
+    name = 'VR_i100A.mat';
     % Frequency [Hz]
     f = 50;
     % Amplitude of the established line voltage [V]
@@ -10,7 +12,7 @@ function options = options_i100A()
     % Basic resistance [Ohm]
     zn = 10500/(3^0.5*5077);
     % Start time [s]
-    startTime = 16.445; 
+    startTime = 16.446; 
     startNumber = int32(startTime/disTime);
     % Duration time [s]
     durationTime = 10;
@@ -22,8 +24,13 @@ function options = options_i100A()
     % Cutting first sub-transient process
     cutPoints = 25;
     % nth-order one-dimensional median filter
-    nFilter = 800;
-    options = struct('f', f, ...
+    iFilter = 10;
+    % nth-order one-dimensional median filter
+    nFilter = .02;
+    % Spline discretization [s]
+    splineTime = 1e-3;
+    options = struct('name', name, ...
+        'f', f, ...
         'uSteady', uSteady, ...
         'ik', ik, ...
         'zn', zn, ...
@@ -34,6 +41,8 @@ function options = options_i100A()
         'endTime', endTime, ...
         'endNumber', endNumber, ...
         'pointInt', pointInt, ...
+        'iFilter', iFilter, ...
         'nFilter', nFilter, ...
-        'cutPoints', cutPoints);
+        'cutPoints', cutPoints, ...
+        'splineTime', splineTime);
 end
