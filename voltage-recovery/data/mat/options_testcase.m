@@ -1,32 +1,36 @@
-function options = options_i75A()
+function options = options_testcase()
+    % Xd = 1.38; Xd' = 0.42; Xd'' = 0.28; 
+    % Xq = 0.92; Xq' = 0.30; Xq'' = 0.18;
+    % Td' = 3.0; Td'' = 0.1; Tq'' = 0.1;
+    % Td0' = 9.86 ; Td0'' = 0.150;     
     % Data-file
-    name = 'VR_i75A.mat';
+    name = 'TestCase.mat';
     % Frequency [Hz]
     f = 50;
     % Amplitude of the established line voltage [V]
-    uSteady = 3300;
+    uSteady = 11094;
     % Temporal discretization [s]
-    disTime = 1e-4;
+    disTime = 5e-4;
     % RMS value of the stator winding phase current {A}
-    ik = 995*2^-0.5;
+    ik = 3964/sqrt(2);
     % Basic resistance [Ohm]
-    zn = 10500/(3^0.5*5077);
+    zn = 15750/(sqrt(3)*7739);
     % Start time [s]
-    startTime = 13.182; 
+    startTime = 0.10; 
     startNumber = int32(startTime/disTime);
     % Duration time [s]
-    durationTime = 10;
+    durationTime = 20;
     % End time [s]
     endTime = startTime + durationTime; 
     endNumber = int32(endTime/disTime);
     % Point interval 
     pointInt = (disTime*f)^-1;
     % Cutting first sub-transient process
-    cutPoints = 25;
+    cutPoints = 200;
     % Initial filter for raw signal "medfilt1"
-    iFilter = 10;    
+    iFilter = 1;    
     % Filter for smoothness
-    nFilter = .02;
+    nFilter = 1;
     % Spline discretization [s]
     splineTime = 1e-3;
     % Type curve for analysis: 1 - spline, 2 - filtered spline

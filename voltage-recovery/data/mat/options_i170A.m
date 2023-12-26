@@ -15,20 +15,24 @@ function options = options_i170A()
     startTime = 11.672; 
     startNumber = int32(startTime/disTime);
     % Duration time [s]
-    durationTime = 14;
+    durationTime = 8;
     % End time [s]
     endTime = startTime + durationTime; 
     endNumber = int32(endTime/disTime);
     % Point interval 
     pointInt = (disTime*f)^-1;
     % Cutting first sub-transient process
-    cutPoints = 25;
-    % nth-order one-dimensional median filter
+    cutPoints = int32(1.5/0.02);
+    % Initial filter for raw signal "medfilt1"
     iFilter = 10;    
-    % nth-order one-dimensional median filter
+    % Filter for smoothness
     nFilter = .02;
     % Spline discretization [s]
     splineTime = 1e-3;
+    % Type curve for analysis: 1 - spline, 2 - filtered spline
+    noCurve = 2;
+    % beta nil
+    beta0 = [-uSteady*10; -1; -1];
     options = struct('name', name, ...
         'f', f, ...
         'uSteady', uSteady, ...
@@ -44,5 +48,7 @@ function options = options_i170A()
         'iFilter', iFilter, ...
         'nFilter', nFilter, ...
         'cutPoints', cutPoints, ...
-        'splineTime', splineTime);
+        'splineTime', splineTime, ...
+        'noCurve', noCurve, ...
+        'beta0', beta0);
 end

@@ -1,18 +1,18 @@
-function options = options_i75A()
+function options = options_rt()
     % Data-file
-    name = 'VR_i75A.mat';
+    name = 'RT_Voltage.mat';
     % Frequency [Hz]
     f = 50;
     % Amplitude of the established line voltage [V]
-    uSteady = 3300;
+    uSteady = 282;
     % Temporal discretization [s]
     disTime = 1e-4;
     % RMS value of the stator winding phase current {A}
-    ik = 995*2^-0.5;
+    ik = 102*2^-0.5;
     % Basic resistance [Ohm]
     zn = 10500/(3^0.5*5077);
     % Start time [s]
-    startTime = 13.182; 
+    startTime = 1.49; 
     startNumber = int32(startTime/disTime);
     % Duration time [s]
     durationTime = 10;
@@ -24,13 +24,13 @@ function options = options_i75A()
     % Cutting first sub-transient process
     cutPoints = 25;
     % Initial filter for raw signal "medfilt1"
-    iFilter = 10;    
+    iFilter = 5;    
     % Filter for smoothness
     nFilter = .02;
     % Spline discretization [s]
     splineTime = 1e-3;
     % Type curve for analysis: 1 - spline, 2 - filtered spline
-    noCurve = 1;
+    noCurve = 1;    
     options = struct('name', name, ...
         'f', f, ...
         'uSteady', uSteady, ...
