@@ -19,22 +19,24 @@ function options = options_testcase()
     startTime = 0.10; 
     startNumber = int32(startTime/disTime);
     % Duration time [s]
-    durationTime = 20;
-    % End time [s]
+    durationTime = 10;
+    % End time [s] End numbers [-]
     endTime = startTime + durationTime; 
     endNumber = int32(endTime/disTime);
     % Point interval 
     pointInt = (disTime*f)^-1;
-    % Cutting first sub-transient process
-    cutPoints = 200;
     % Initial filter for raw signal "medfilt1"
     iFilter = 1;    
     % Filter for smoothness
     nFilter = 1;
     % Spline discretization [s]
     splineTime = 1e-3;
+    % Cutting first sub-transient process
+    cutPoints = int32(1/splineTime);
     % Type curve for analysis: 1 - spline, 2 - filtered spline
     noCurve = 1;
+    % beta nil
+    beta0 = [-0.1; uSteady; 0.1];
     options = struct('name', name, ...
         'f', f, ...
         'uSteady', uSteady, ...
@@ -51,5 +53,6 @@ function options = options_testcase()
         'nFilter', nFilter, ...
         'cutPoints', cutPoints, ...
         'splineTime', splineTime, ...
-        'noCurve', noCurve);
+        'noCurve', noCurve, ...
+        'beta0', beta0);
 end

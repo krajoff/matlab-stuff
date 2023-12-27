@@ -22,9 +22,9 @@ function options = options_i170A()
     % Point interval 
     pointInt = (disTime*f)^-1;
     % Cutting first sub-transient process
-    cutPoints = int32(1.5/0.02);
+    cutPoints = int32(1*f);
     % Initial filter for raw signal "medfilt1"
-    iFilter = 10;    
+    iFilter = 5;    
     % Filter for smoothness
     nFilter = .02;
     % Spline discretization [s]

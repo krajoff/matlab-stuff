@@ -22,7 +22,7 @@ function options = options_i100A()
     % Point interval 
     pointInt = (disTime*f)^-1;
     % Cutting first sub-transient process
-    cutPoints = 25;
+    cutPoints = int32(1*f);
     % Initial filter for raw signal "medfilt1"
     iFilter = 10;    
     % Filter for smoothness
@@ -31,6 +31,8 @@ function options = options_i100A()
     splineTime = 1e-3;
     % Type curve for analysis: 1 - spline, 2 - filtered spline
     noCurve = 1;
+    % beta nil
+    beta0 = [-uSteady*10; -1; -1];
     options = struct('name', name, ...
         'f', f, ...
         'uSteady', uSteady, ...
@@ -47,5 +49,6 @@ function options = options_i100A()
         'nFilter', nFilter, ...
         'cutPoints', cutPoints, ...
         'splineTime', splineTime, ...
-        'noCurve', noCurve);
+        'noCurve', noCurve, ...
+        'beta0', beta0);
 end

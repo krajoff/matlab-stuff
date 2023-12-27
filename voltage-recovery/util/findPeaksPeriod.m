@@ -7,7 +7,7 @@ function [timePeaks, valuePeaks] = findPeaksPeriod(time,data,opt)
     startTime = 1;
     endTime = startTime+ps-1;
     for i = 0:np
-        ps = fps(time(startTime:endTime+2*ps),opt);        
+        ps = fps(time(startTime:endTime+ps*2),opt);        
         endTime = startTime+ps-1;          
         v = data(startTime:endTime);
         t = time(startTime:endTime);
@@ -16,7 +16,7 @@ function [timePeaks, valuePeaks] = findPeaksPeriod(time,data,opt)
             timePeaks = [timePeaks;te];
             valuePeaks = [valuePeaks;ve];
         end
-        startTime = endTime + 1;
+        startTime = endTime+1;
     end
 end
 
@@ -32,7 +32,7 @@ function [te, ve, k] = extractMax(t,v,tp,opt)
 end
 
 function ps = fps(time,opt)
-    ts = mean(diff(time(1:3)));
+    ts = mean(diff(time(1:end)));
     ps = int32((ts*opt.f)^-1);
     ts = mean(diff(time(1:ps)));
     ps = int32((ts*opt.f)^-1);

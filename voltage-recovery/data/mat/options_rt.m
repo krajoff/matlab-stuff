@@ -22,7 +22,7 @@ function options = options_rt()
     % Point interval 
     pointInt = (disTime*f)^-1;
     % Cutting first sub-transient process
-    cutPoints = 25;
+    cutPoints = int32(1*f);
     % Initial filter for raw signal "medfilt1"
     iFilter = 5;    
     % Filter for smoothness
