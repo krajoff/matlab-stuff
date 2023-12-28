@@ -1,5 +1,4 @@
-function out = calculatePeaksSpline(data,VoltageAnalysis,opt,title)
-    figure('Name', "Stator voltage, envelope, peaks (" + title + ")");
+function out = calculatePeaksSpline(data,VoltageAnalysis,opt)
     initialFiltered = medfilt1(VoltageAnalysis,opt.iFilter);
     [timePeaks,valuePeaks] = findPeaksNils(data.Time,initialFiltered,opt);
     timeSpline = (opt.startTime:opt.splineTime:opt.endTime)';   

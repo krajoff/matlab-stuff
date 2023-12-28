@@ -19,12 +19,12 @@ function options = options_testcase()
     startTime = 0.10; 
     startNumber = int32(startTime/disTime);
     % Duration time [s]
-    durationTime = 10;
+    durationTime = 15;
     % End time [s] End numbers [-]
     endTime = startTime + durationTime; 
     endNumber = int32(endTime/disTime);
-    % Point interval 
-    pointInt = (disTime*f)^-1;
+    % Point interval
+    % pointInt = (disTime*f)^-1;
     % Initial filter for raw signal "medfilt1"
     iFilter = 1;    
     % Filter for smoothness
@@ -48,7 +48,6 @@ function options = options_testcase()
         'disTime', disTime, ...
         'endTime', endTime, ...
         'endNumber', endNumber, ...
-        'pointInt', pointInt, ...
         'iFilter', iFilter, ...
         'nFilter', nFilter, ...
         'cutPoints', cutPoints, ...

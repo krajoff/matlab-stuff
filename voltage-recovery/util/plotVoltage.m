@@ -1,4 +1,6 @@
-function plotVoltage(data,VoltageAnalysis,out,opt)
+function plotVoltage(data,VoltageAnalysis,out,opt,title)
+    fh = figure('Name', "Stator voltage, envelope, peaks (" + title + ")");
+    fh.WindowState = 'maximized';
     subplot(2,1,1);
     plot(data.Time, VoltageAnalysis, 'Linewidth', 1); 
     hold on

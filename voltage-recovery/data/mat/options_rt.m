@@ -4,11 +4,11 @@ function options = options_rt()
     % Frequency [Hz]
     f = 50;
     % Amplitude of the established line voltage [V]
-    uSteady = 282;
+    uSteady = 250;
     % Temporal discretization [s]
     disTime = 1e-4;
     % RMS value of the stator winding phase current {A}
-    ik = 102*2^-0.5;
+    ik = 100*2^-0.5;
     % Basic resistance [Ohm]
     zn = 10500/(3^0.5*5077);
     % Start time [s]
@@ -19,18 +19,18 @@ function options = options_rt()
     % End time [s]
     endTime = startTime + durationTime; 
     endNumber = int32(endTime/disTime);
-    % Point interval 
-    pointInt = (disTime*f)^-1;
-    % Cutting first sub-transient process
-    cutPoints = int32(1*f);
     % Initial filter for raw signal "medfilt1"
-    iFilter = 5;    
+    iFilter = 2;    
     % Filter for smoothness
-    nFilter = .02;
+    nFilter = .1;
     % Spline discretization [s]
     splineTime = 1e-3;
+    % Cutting first sub-transient process
+    cutPoints = int32(1/splineTime);     
     % Type curve for analysis: 1 - spline, 2 - filtered spline
-    noCurve = 1;    
+    noCurve = 2; 
+    % beta nil
+    beta0 = [-0.1; uSteady; 0.1];
     options = struct('name', name, ...
         'f', f, ...
         'uSteady', uSteady, ...
@@ -42,10 +42,10 @@ function options = options_rt()
         'disTime', disTime, ...
         'endTime', endTime, ...
         'endNumber', endNumber, ...
-        'pointInt', pointInt, ...
         'iFilter', iFilter, ...
         'nFilter', nFilter, ...
         'cutPoints', cutPoints, ...
         'splineTime', splineTime, ...
-        'noCurve', noCurve);
+        'noCurve', noCurve, ...
+        'beta0', beta0);
 end
