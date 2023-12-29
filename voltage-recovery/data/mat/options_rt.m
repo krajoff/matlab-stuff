@@ -6,7 +6,7 @@ function options = options_rt()
     % Amplitude of the established line voltage [V]
     uSteady = 250;
     % Temporal discretization [s]
-    disTime = 1e-4;
+    disTime = 5e-4;
     % RMS value of the stator winding phase current {A}
     ik = 100*2^-0.5;
     % Basic resistance [Ohm]
@@ -22,7 +22,7 @@ function options = options_rt()
     % Initial filter for raw signal "medfilt1"
     iFilter = 2;    
     % Filter for smoothness
-    nFilter = .1;
+    nFilter = .01;
     % Spline discretization [s]
     splineTime = 1e-3;
     % Cutting first sub-transient process

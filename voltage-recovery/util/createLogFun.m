@@ -8,9 +8,9 @@ function out = createLogFun(out,opt)
         beta(1)+beta(2).*exp(-beta(3).*timeCutting);
     
     % Create an anonymous function    
-    out.beta = lsqcurvefit(out.logfun, opt.beta0, ...
-        out.timeCutting, out.yUCutting);
+    out.beta = lsqcurvefit(out.logfun,opt.beta0, ...
+        out.timeCutting,out.yUCutting);
     out.deltaUfun = @(time)...
         out.beta(1)+out.beta(2).*exp(-out.beta(3).*time);
-    out.deltaUsub = out.deltaU-out.deltaUfun(out.time); 
+    out.deltaUsub = out.deltaU-out.deltaUfun(out.time);   
 end

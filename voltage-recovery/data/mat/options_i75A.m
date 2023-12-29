@@ -15,20 +15,20 @@ function options = options_i75A()
     startTime = 13.182; 
     startNumber = int32(startTime/disTime);
     % Duration time [s]
-    durationTime = 10;
+    durationTime = 15;
     % End time [s]
     endTime = startTime + durationTime; 
     endNumber = int32(endTime/disTime);
     % Initial filter for raw signal "medfilt1"
     iFilter = 5;    
     % Filter for smoothness
-    nFilter = .02;
+    nFilter = .01;
     % Spline discretization [s]
     splineTime = 1e-3;
     % Cutting first sub-transient process
     cutPoints = int32(1/splineTime);        
     % Type curve for analysis: 1 - spline, 2 - filtered spline
-    noCurve = 2;
+    noCurve = 1;
     % beta nil
     beta0 = [-0.1; uSteady; 0.1];
     options = struct('name', name, ...

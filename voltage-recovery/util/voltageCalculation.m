@@ -4,6 +4,8 @@ function voltageCalculation(data,VoltageAnalysis,opt,title)
    	out = overwriteVoltage(out,opt);
     plotVoltage(data,VoltageAnalysis,out,opt,title);
     out = createLogFun(out,opt);
-    plotSemilog(out,title);
-    reactances(out,opt,title);
+    out = createSubLogFun(out,opt);
+    plotSemilog(out,opt,title);
+    out = reactances(out,opt);
+    printResults(out,title);
 end
