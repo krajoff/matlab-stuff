@@ -20,7 +20,7 @@ function options = options_rt()
     endTime = startTime + durationTime; 
     endNumber = int32(endTime/disTime);
     % Initial filter for raw signal "medfilt1"
-    iFilter = 2;    
+    iFilter = 1;    
     % Filter for smoothness
     nFilter = .01;
     % Spline discretization [s]
