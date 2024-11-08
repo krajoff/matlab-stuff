@@ -1,6 +1,11 @@
-function out = calculatePeaksSpline(data,VoltageAnalysis,opt)
-    initialFiltered = medfilt1(VoltageAnalysis,opt.iFilter);
+function out = calculatePeaksSpline(data,opt)
+    
+    initialFiltered_1 = medfilt1(data.(opt.names{1}),opt.iFilter);
+    initialFiltered_2 = medfilt1(data.(opt.names{2}),opt.iFilter);
+    initialFiltered_3 = medfilt1(data.(opt.names{3}),opt.iFilter);
+
     [timePeaks,valuePeaks] = findPeaksNils(data.Time,initialFiltered,opt);
+    
     timeSpline = (opt.startTime:opt.splineTime:opt.endTime)';   
     [~,ind] = unique(timePeaks);
     valueSpline = interp1(timePeaks(ind), ...

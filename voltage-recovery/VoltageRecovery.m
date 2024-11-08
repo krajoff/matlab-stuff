@@ -4,7 +4,7 @@ clear;
 
 % Main path and data file
 paths;
-opt = options_i170A;
+opt = options_residual_t3f_210;
 mfilepath = fullfile(pwd, 'data\mat', opt.name);
 load(mfilepath);
 data = decreaseStep(data, opt); 

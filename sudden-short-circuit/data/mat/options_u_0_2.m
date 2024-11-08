@@ -1,6 +1,8 @@
 function options = options_u_0_2()
     % Data-file
     name = 'SSC_u_0_2.mat';
+    % Currents columns names
+    currentNames = {'CurrentA','CurrentB','CurrentC'};
     % Frequency [Hz]
     f = 50;
     % Amplitude of the established phase current [A]
@@ -32,6 +34,7 @@ function options = options_u_0_2()
     % beta nil
     beta0 = [-0.1; iSteady; 0.1];
     options = struct('name', name, ...
+        'currentNames', currentNames, ...
         'f', f, ...
         'iSteady', iSteady, ...
         'u0', u0, ...

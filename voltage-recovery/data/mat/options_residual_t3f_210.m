@@ -1,48 +1,40 @@
-function options = options_u_0_1()
+function options = options_residual_t3f_210()
     % Data-file
-    name = 'SSC_u_0_1.mat';
-    % Currents columns names
-    currentA = 'CurrentA';
-    currentB = 'CurrentB';
-    currentC = 'CurrentC';
-    % Integra
+    name = 'VR_residual_t3f_210.mat';
     % Frequency [Hz]
     f = 50;
-    % Amplitude of the established phase current [A]
-    iSteady = 20;
+    % Amplitude of the established line voltage [V]
+    uSteady = 51.4*3^.5;
     % Temporal discretization [s]
-    disTime = 1e-4;
-    % RMS value of the stator winding line voltage {V}
-    u0 = 50*2^-0.5;
+    disTime = 5e-4;
+    % RMS value of the stator winding phase current {A}
+    ik = 22.0;
     % Basic resistance [Ohm]
-    zn = 15750/(3^0.5*8625);
+    zn = 10500/(3^0.5*5077);
     % Start time [s]
-    startTime = 0; 
+    startTime = .71; 
     startNumber = int32(startTime/disTime);
     % Duration time [s]
-    durationTime = 10;
+    durationTime = 15;
     % End time [s]
     endTime = startTime + durationTime; 
     endNumber = int32(endTime/disTime);
     % Initial filter for raw signal "medfilt1"
-    iFilter = 5;    
+    iFilter = 2;    
     % Filter for smoothness
     nFilter = .01;
     % Spline discretization [s]
     splineTime = 1e-3;
     % Cutting first sub-transient process
-    cutPoints = int32(1/splineTime);        
+    cutPoints = int32(1/splineTime);     
     % Type curve for analysis: 1 - spline, 2 - filtered spline
-    noCurve = 1;
+    noCurve = 2; 
     % beta nil
-    beta0 = [-0.1; iSteady; 0.1];
+    beta0 = [-0.1; uSteady; 0.1];
     options = struct('name', name, ...
-        'currentA', currentA, ...
-        'currentB', currentB, ...
-        'currentC', currentC, ...
         'f', f, ...
-        'iSteady', iSteady, ...
-        'u0', u0, ...
+        'uSteady', uSteady, ...
+        'ik', ik, ...
         'zn', zn, ...
         'startTime', startTime, ...
         'startNumber', startNumber, ...
