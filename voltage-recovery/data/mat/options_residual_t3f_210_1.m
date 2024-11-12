@@ -1,6 +1,6 @@
-function options = options_residual_t3f_210()
+function options = options_residual_t3f_210_1()
     % Data-file
-    name = 'VR_residual_t3f_210.mat';
+    name = 'VR_residual_t3f_210_1.mat';
     % Frequency [Hz]
     f = 50;
     % Amplitude of the established line voltage [V]
