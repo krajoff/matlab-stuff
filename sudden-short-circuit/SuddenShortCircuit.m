@@ -1,13 +1,5 @@
-close all
-clear;
+close all; clear; paths;
 
-% Main path and data file
-paths;
-
+% Main struct file in /data/mat/..
 opt = options_u_0_1;
-load(fullfile(pwd, 'data\mat', opt.name));
-
-data = decreaseStep(data,opt); 
-data = includeNil(data);
-
-currentCalculation(data,opt);
+opt = currentCalculation(opt);
