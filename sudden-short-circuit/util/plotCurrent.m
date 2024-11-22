@@ -9,7 +9,7 @@ function plotCurrent(opt)
              data.(opt.time), data.(opt.currentC), ...
              'Linewidth', 2);
         
-        xlim([opt.plotTime(1), opt.plotTime(2)]);
+        xlim([opt.timeSpan(1), opt.timeSpan(2)]);
         legend ('Current A', 'Current B', 'Current C');
         grid on;
     end     

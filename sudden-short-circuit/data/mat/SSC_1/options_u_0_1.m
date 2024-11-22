@@ -1,55 +1,57 @@
 function options = options_u_0_1()
     % Load MATLAB-file with table-data
     name = 'SSC_u_0_1.mat';    
-    data = load(name); fieldNames = fieldnames(data); data = data.(fieldNames{1});
     % Rogowski coil ratio [A/V]
     coilRatio = .1;
     % Time column name
     time = 'Time';
     % Currents columns names
-    currentA = 'CurrentA'; currentB = 'CurrentB'; currentC = 'CurrentC'; 
-    needToIntegrate = true;
+    currentA = 'CurrentA'; currentB = 'CurrentB'; currentC = 'CurrentC';
+    % Is Integration of the Raw Signal Necessary?
+    isRogowski = true;
     % Frequency [Hz]
     f = 50;
     % Amplitude of the established phase current [A]
     iSteady = 20;
     % Temporal discretization [s] (0 is no changes of discretization)
     disTime = 0;
-    % Points per period [-]
-    ppp = 1/(disTime*f);
     % RMS value of the stator winding line voltage {V}
     u0 = 50*2^-0.5;
     % Basic resistance [Ohm]
     zn = 15750/(3^0.5*8625);
     % Time interval for analysis [s]
-    analysisTime = [0 20];
-    % Time interval for plot [s]
-    plotTime = [0 30];    
+    timeSpan = [0 25];
+    % Sudden short circuit time start [s]
+    timeStart = 1;
     % Initial filter for raw signal "medfilt1"
     iFilter = 5;    
     % Filter for smoothness
     nFilter = .01;
-    % Spline discretization [s]
-    splineTime = 1e-3;
-    % Cutting first sub-transient process
-    cutPoints = int32(1/splineTime);        
     % Type curve for analysis: 1 - spline, 2 - filtered spline
     noCurve = 1;
     % beta nil
     beta0 = [-0.1; iSteady; 0.1];
+    % Spline discretization [s]
+    splineTime = 1e-3;
+    % Points per period [-]
+    ppp = int32(1/(disTime*f));
+    % Cutting first sub-transient process
+    cutPoints = int32(1/splineTime);        
+    % Load data from file
+    data = load(name); fieldNames = fieldnames(data); data = data.(fieldNames{1});
     options = struct('name', name, ...
         'coilRatio', coilRatio, ...
         'time', time, ...
         'currentA', currentA, ...
         'currentB', currentB, ...
         'currentC', currentC, ...
-        'needToIntegrate', needToIntegrate, ... 
+        'isRogowski', isRogowski, ... 
         'f', f, ...
         'iSteady', iSteady, ...
         'u0', u0, ...
         'zn', zn, ...
-        'analysisTime', analysisTime, ...
-        'plotTime', plotTime, ...
+        'timeSpan', timeSpan, ...
+        'timeStart', timeStart, ...
         'disTime', disTime, ...
         'ppp', ppp, ...
         'iFilter', iFilter, ...
