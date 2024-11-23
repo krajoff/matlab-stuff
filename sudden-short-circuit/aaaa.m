@@ -6,7 +6,7 @@ close all;
         
        
         R = -data.(opt.currentA);
-        integral_currentA = cumtrapz(R);
+        integral_currentA = cumtrapz(time,R)*2*pi*opt.f;
         
         linear = polyfit(time(1:opt.timeStart/opt.disTime+1), ...
             integral_currentA(1:opt.timeStart/opt.disTime+1), 1);
