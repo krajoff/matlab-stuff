@@ -14,7 +14,7 @@ close all;
         function_fit = polyval(linear,time);
        
         rogowski = integral_currentA-function_fit;
-        error = 0.002;
+        error = 0;
         delta = 1.7+1.898-1.913;
         
         figure('Name', "Stator current");

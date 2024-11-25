@@ -1,7 +1,8 @@
 function opt = currentCalculation(opt)
+    opt = checkOpt(opt);
     opt = increaseStep(opt);
     opt = currentIntegration(opt);
-    %plotCurrent(opt);
+    plotCurrent(opt);
     
     
 %     out = calculatePeaksSpline(data,opt);

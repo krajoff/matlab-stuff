@@ -1,17 +1,16 @@
 function plotCurrent(opt)
 
     data = opt.data;
-    if (sum(strcmp(opt.currentA, data.Properties.VariableNames)) > 0)
+    if (sum(strcmp(opt.current(1), data.Properties.VariableNames)) > 0)
         figure('Name', "Stator current");
         
-        plot(data.(opt.time), data.(opt.currentA), ...
-             data.(opt.time), data.(opt.currentB), ...
-             data.(opt.time), data.(opt.currentC), ...
-             'Linewidth', 2);
-        
-        xlim([opt.timeSpan(1), opt.timeSpan(2)]);
-        legend ('Current A', 'Current B', 'Current C');
-        grid on;
+        for i = 1:length(opt.current)
+            plot(data.(opt.time), data.(opt.current(i)), 'Linewidth', 2);
+            hold on
+        end
+        xlim([0, opt.timeSpan(2)-opt.timeSpan(1)]);
+        legend(opt.current);
+        grid on; hold off;
     end     
     
 end
