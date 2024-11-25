@@ -20,15 +20,15 @@ function options = options_u_0_2()
     % Amplitude of the established phase current [A]
     iSteady = 20;
     % Temporal discretization [s] (0 is no changes of discretization)
-    disTime = 10^-4;
+    disTime = 1e-4;
     % RMS value of the stator winding line voltage {V}
     u0 = 50*2^-0.5;
     % Basic resistance [Ohm]
     zn = U/(3^0.5*I);
     % Time interval for analysis [s]
-    timeSpan = [1 5];
+    timeSpan = [1.5 5];
     % Sudden short circuit time start [s]
-    timeStart = 0.5;
+    timeStart = 0.25;
     % Filter for smoothness
     nFilter = .01;
     % Type curve for analysis: 1 - spline, 2 - filtered spline

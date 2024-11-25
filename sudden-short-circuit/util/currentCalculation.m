@@ -3,9 +3,7 @@ function opt = currentCalculation(opt)
     opt = increaseStep(opt);
     opt = currentIntegration(opt);
     plotCurrent(opt);
-    
-    
-%     out = calculatePeaksSpline(data,opt);
+    %opt = calculatePeaksSpline(opt);
 %    	out = overwriteVoltage(out,opt);
 %     plotVoltage(data,VoltageAnalysis,out,opt,title);
 %     out = createLogFun(out,opt);

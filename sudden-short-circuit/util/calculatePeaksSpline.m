@@ -1,10 +1,6 @@
-function out = calculatePeaksSpline(data,opt)
+function opt = calculatePeaksSpline(opt)
     
-    initialFiltered_1 = medfilt1(data.(opt.names{1}),opt.iFilter);
-    initialFiltered_2 = medfilt1(data.(opt.names{2}),opt.iFilter);
-    initialFiltered_3 = medfilt1(data.(opt.names{3}),opt.iFilter);
-
-    [timePeaks,valuePeaks] = findPeaksNils(data.Time,initialFiltered,opt);
+    [timePeaks,valuePeaks] = findPeaksNils(opt);
     
     timeSpline = (opt.startTime:opt.splineTime:opt.endTime)';   
     [~,ind] = unique(timePeaks);
@@ -17,4 +13,5 @@ function out = calculatePeaksSpline(data,opt)
         'timeSpline', timeSpline, ...
         'valueSpline', valueSpline, ...
         'valueFiltered', valueFiltered);   
+    
 end
