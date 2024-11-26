@@ -2,8 +2,9 @@ function opt = currentCalculation(opt)
     opt = checkOpt(opt);
     opt = increaseStep(opt);
     opt = currentIntegration(opt);
-    plotCurrent(opt);
     opt = findPeaks(opt);
+    plotCurrent(opt);
+
    % opt = calculatePeaksSpline(opt);
 %    	out = overwriteVoltage(out,opt);
 %     plotVoltage(data,VoltageAnalysis,out,opt,title);
